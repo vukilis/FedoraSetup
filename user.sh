@@ -12,7 +12,7 @@
 
 
 user(){
-    if [ $(whoami) != "root" ]; then
+    if [ $(whoami) = "root" ]; then
         sudo groupadd $group 
         sudo useradd -m -u 1005 -g $group -G wheel  -s /bin/bash -c "main_user" $username
         echo "$username created, home directory created, added to wheel and $group group, default shell set to /bin/bash"
