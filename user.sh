@@ -13,16 +13,19 @@
 
 user(){
     if [ $(whoami) != "root" ]; then
-        sudo groupadd -g 1015 $username 
+        sudo groupadd $username 
         pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
-        sudo useradd -m -u 1015 -g $username -G wheel  -s /bin/bash -c "main_user" -p $pass $username
+        sudo useradd -m -g $username -G wheel -s /bin/bash -c "main_user" -p $pass $username
         echo "$username created, home directory created, added to wheel and $username group, default shell set to /bin/bash"
         echo "$username password set"
-        echo $pass
-
         sudo hostnamectl set-hostname $name_of_machine
     else
-        echo "You are logged as root"
+        groupadd $username 
+        pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+        useradd -m -g $username -G wheel -s /bin/bash -c "main_user" -p $pass $username
+        echo "$username created, home directory created, added to wheel and $username group, default shell set to /bin/bash"
+        echo "$username password set"
+        hostnamectl set-hostname $name_of_machine
     fi
 }
 
