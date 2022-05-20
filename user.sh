@@ -32,6 +32,7 @@ user(){
 while true
 do 
     read -p "Please enter username: " username
+    # username regex
     if [[ "${username,,}" =~ ^[a-z_]([a-z0-9_-]{0,31}|[a-z0-9_-]{0,30}\$)$ ]]
     then 
         break
@@ -44,7 +45,7 @@ read -p "Please enter password: " password
 while true
 do 
     read -p "Please name your machine: " name_of_machine
-    # hostname regex (!!couldn't find spec for computer name!!)
+    # hostname regex
     if [[ "${name_of_machine,,}" =~ ^[a-z][a-z0-9_.-]{0,62}[a-z0-9]$ ]]
     then 
         break 
