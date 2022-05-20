@@ -13,11 +13,12 @@
 
 user(){
     if [ $(whoami) != "root" ]; then
-        sudo groupadd -g 1009 $username 
+        sudo groupadd -g 1011 $username 
         pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
-        sudo useradd -m -u 1009 -g $username -G wheel  -s /bin/bash -c "main_user" -p $password $username
+        sudo useradd -m -u 1011 -g $username -G wheel  -s /bin/bash -c "main_user" -p $password $username
         echo "$username created, home directory created, added to wheel and $username group, default shell set to /bin/bash"
         echo "$username password set"
+        echo $pass
 
         sudo hostnamectl set-hostname $name_of_machine
     else
