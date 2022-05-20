@@ -13,11 +13,9 @@
 
 user(){
     if [ $(whoami) != "root" ]; then
-        sudo groupadd $group 
-        sudo useradd -m -u 1006 -g $group -G wheel  -s /bin/bash -c "main_user" $username
-        echo "$username created, home directory created, added to wheel and $group group, default shell set to /bin/bash"
-        #mkhomedir_helper username
-        sudo echo "$username:$password" | chpasswd
+        sudo groupadd $username 
+        sudo useradd -m -u 1008 -g $username -G wheel  -s /bin/bash -c "main_user" -p $password $username
+        echo "$username created, home directory created, added to wheel and $username group, default shell set to /bin/bash"
         echo "$username password set"
 
         sudo hostnamectl set-hostname $name_of_machine
@@ -25,16 +23,6 @@ user(){
         echo "You are logged as root"
     fi
 }
-
-while true
-do 
-    read -p "Please enter group: " group
-    if [[ "${group,,}" =~ ^[a-z_]([a-z0-9_-]{0,31}|[a-z0-9_-]{0,30}\$)$ ]]
-    then 
-        break
-    fi 
-    echo "Incorrect group."
-done 
 
 while true
 do 
