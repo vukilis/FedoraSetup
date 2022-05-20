@@ -13,14 +13,14 @@
 
 user(){
     if [ $(whoami) != "root" ]; then
-        groupadd -g 1000 $group 
-        sudo useradd -m -u 1000 -G wheel,$group  -s /bin/bash -c "main_user" $username
+        groupadd -g 1001 $group 
+        sudo useradd -m -u 1001 -G wheel,$group  -s /bin/bash -c "main_user" $username
         echo "$username created, home directory created, added to wheel and $group group, default shell set to /bin/bash"
         #mkhomedir_helper username
-        echo "$username:$password" | chpasswd
+        sudo echo "$username:$password" | chpasswd
         echo "$username password set"
 
-        echo $name_of_machine > /etc/hostname
+        sudo echo $name_of_machine > /etc/hostname
     else
         echo "You are logged as root"
     fi
@@ -28,17 +28,7 @@ user(){
 
 while true
 do 
-    read -p "Please enter group:" group
-    if [[ "${group,,}" =~ ^[a-z_]([a-z0-9_-]{0,31}|[a-z0-9_-]{0,30}\$)$ ]]
-    then 
-        break
-    fi 
-    echo "Incorrect group."
-done 
-
-while true
-do 
-    read -p "Please enter username:" username
+    read -p "Please enter username: " username
     if [[ "${username,,}" =~ ^[a-z_]([a-z0-9_-]{0,31}|[a-z0-9_-]{0,30}\$)$ ]]
     then 
         break
@@ -46,11 +36,21 @@ do
     echo "Incorrect username."
 done 
 
-read -p "Please enter password:" password
+while true
+do 
+    read -p "Please enter group: " group
+    if [[ "${group,,}" =~ ^[a-z_]([a-z0-9_-]{0,31}|[a-z0-9_-]{0,30}\$)$ ]]
+    then 
+        break
+    fi 
+    echo "Incorrect group."
+done 
+
+read -p "Please enter password: " password
 
 while true
 do 
-    read -p "Please name your machine:" name_of_machine
+    read -p "Please name your machine: " name_of_machine
     # hostname regex (!!couldn't find spec for computer name!!)
     if [[ "${name_of_machine,,}" =~ ^[a-z][a-z0-9_.-]{0,62}[a-z0-9]$ ]]
     then 
