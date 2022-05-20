@@ -26,8 +26,6 @@ user(){
     fi
 }
 
-user
-
 while true
 do 
     read -p "Please enter username:" username
@@ -55,3 +53,5 @@ do
         break 
     fi 
 done 
+
+user
