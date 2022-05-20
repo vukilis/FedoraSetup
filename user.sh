@@ -12,7 +12,7 @@
 
 
 user(){
-    if [ $(whoami) = "root" ]; then
+    if [ $(whoami) != "root" ]; then
         sudo groupadd $group 
         sudo useradd -m -u 1006 -g $group -G wheel  -s /bin/bash -c "main_user" $username
         echo "$username created, home directory created, added to wheel and $group group, default shell set to /bin/bash"
@@ -20,7 +20,7 @@ user(){
         sudo echo "$username:$password" | chpasswd
         echo "$username password set"
 
-        sudo echo $name_of_machine > /etc/hostname
+        sudo hostnamectl set-hostname $name_of_machine
     else
         echo "You are logged as root"
     fi
