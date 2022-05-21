@@ -10,7 +10,7 @@
 #      `8'        `V88V"V8P' o888o o888o o888o o888o o888o 8""888P' 
 ####################################################################
 
-# xargs dnf -y -a ../pkg-files/dnf-pkgs.txt
+xargs dnf -y install -a ../pkg-files/dnf-pkgs.txt
 
 # for pkg in `cat ../pkg-files/dnf-pkgs.txt`
 # do dnf -y install $pack
