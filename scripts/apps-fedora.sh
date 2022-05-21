@@ -10,7 +10,14 @@
 #      `8'        `V88V"V8P' o888o o888o o888o o888o o888o 8""888P' 
 ####################################################################
 
-# xargs dnf -y install -a ../pkg-files/dnf-pkgs.txt
+rpm_pkgs(){
+  #VisualStudioCode
+  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+  sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+  #
+}
+rpm_pkgs
+sudo dnf check-update
 
 for pkg in `cat ../pkg-files/dnf-pkgs.txt`
 do sudo dnf -y install $pkg
