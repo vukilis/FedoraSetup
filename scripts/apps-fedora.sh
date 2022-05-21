@@ -10,6 +10,12 @@
 #      `8'        `V88V"V8P' o888o o888o o888o o888o o888o 8""888P' 
 ####################################################################
 
-
-
-# Ubuntu, Fedora, Arch ?
+sed -n '/'$INSTALL_TYPE'/q;p' ../pkg-files/dnf-pkgs.txt | while read line
+do
+  if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]; then
+    # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
+    continue
+  fi
+  echo "INSTALLING: ${line}"
+  dnf -y ${line}
+done

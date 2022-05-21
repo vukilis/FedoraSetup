@@ -1,0 +1,2 @@
+--END OF MINIMAL INSTALL--
+code
