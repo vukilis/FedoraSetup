@@ -10,7 +10,7 @@
 #      `8'        `V88V"V8P' o888o o888o o888o o888o o888o 8""888P' 
 ####################################################################
 
-xargs sudo apt-get install -a ../pkg-files/dnf-pkgs.txt
+xargs dnf -y -a ../pkg-files/dnf-pkgs.txt
 
 # sed -n '/'$INSTALL_TYPE'/q;p' ../pkg-files/dnf-pkgs.txt | while read line
 # do
