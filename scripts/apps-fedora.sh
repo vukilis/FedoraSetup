@@ -10,11 +10,11 @@
 #      `8'        `V88V"V8P' o888o o888o o888o o888o o888o 8""888P' 
 ####################################################################
 
-xargs dnf -y install -a ../pkg-files/dnf-pkgs.txt
+# xargs dnf -y install -a ../pkg-files/dnf-pkgs.txt
 
-# for pkg in `cat ../pkg-files/dnf-pkgs.txt`
-# do dnf -y install $pack
-# done
+for pkg in `cat ../pkg-files/dnf-pkgs.txt`
+do dnf -y install $pack
+done
 
 sed -n '/'$INSTALL_TYPE'/q;p' ../pkg-files/dnf-pkgs.txt | while read line
 do
