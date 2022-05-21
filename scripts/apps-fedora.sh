@@ -13,7 +13,7 @@
 # xargs dnf -y install -a ../pkg-files/dnf-pkgs.txt
 
 for pkg in `cat ../pkg-files/dnf-pkgs.txt`
-do dnf -y install $pkg
+do sudo dnf -y install $pkg
 done
 
 # sed -n '/'$INSTALL_TYPE'/q;p' ../pkg-files/dnf-pkgs.txt | while read line
