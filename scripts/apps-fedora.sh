@@ -13,15 +13,15 @@
 # xargs dnf -y install -a ../pkg-files/dnf-pkgs.txt
 
 for pkg in `cat ../pkg-files/dnf-pkgs.txt`
-do dnf -y install $pack
+do dnf -y install $pkg
 done
 
-sed -n '/'$INSTALL_TYPE'/q;p' ../pkg-files/dnf-pkgs.txt | while read line
-do
-  if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]; then
-    # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
-    continue
-  fi
-  echo "INSTALLING: ${line}"
-  dnf -y install ${line}
-done
+# sed -n '/'$INSTALL_TYPE'/q;p' ../pkg-files/dnf-pkgs.txt | while read line
+# do
+#   if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]; then
+#     # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
+#     continue
+#   fi
+#   echo "INSTALLING: ${line}"
+#   dnf -y install ${line}
+# done
