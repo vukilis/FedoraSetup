@@ -36,6 +36,18 @@ EOF
 ######### Update ##########
 repo_pkgs
 sudo dnf check-update
+#sudo dnf update
+
+######### Install rpm fusion ##########
+sudo dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y groupupdate core
+
+######### Install flatpak ##########
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+######### Install media codec ##########
+sudo dnf -y groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+sudo dnf -y groupupdate sound-and-video
 
 ###### Install pkgs #######
 for pkg in `cat ../pkg-files/dnf-pkgs.txt`
