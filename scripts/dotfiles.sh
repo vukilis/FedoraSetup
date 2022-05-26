@@ -11,3 +11,5 @@
 ####################################################################
 
 sudo cp ../dotfiles/dnf.conf /etc/dnf/dnf.conf 
+sudo cp -r ../dotfiles/.config/* ~/.config/
+sudo cp ../dotfiles/.home/* ~/
