@@ -10,6 +10,6 @@
 #      `8'        `V88V"V8P' o888o o888o o888o o888o o888o 8""888P' 
 ####################################################################
 
-sudo cp ../dotfiles/dnf.conf /etc/dnf/dnf.conf 
-sudo cp -r ../dotfiles/.config/* ~/.config/
-sudo cp ../dotfiles/.home/* ~/
+sudo cp $SCRIPT_DIR/dotfiles/dnf.conf /etc/dnf/dnf.conf 
+sudo cp -r $SCRIPT_DIR/dotfiles/.config/* ~/.config/
+sudo cp $SCRIPT_DIR/dotfiles/.home/* ~/
