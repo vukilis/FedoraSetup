@@ -34,7 +34,7 @@ sudo dnf -y groupupdate multimedia --setop="install_weak_deps=False" --exclude=P
 sudo dnf -y groupupdate sound-and-video
 
 ########## Install pkgs ##########
-for pkg in `cat ../pkg-files/dnf-pkgs.txt`
+for pkg in `cat $SCRIPT_DIR/pkg-files/dnf-pkgs.txt`
 do sudo dnf -y install $pkg
 done
 
