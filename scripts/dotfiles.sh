@@ -12,4 +12,4 @@
 
 sudo cp $SCRIPT_DIR/dotfiles/dnf.conf /etc/dnf/dnf.conf 
 sudo cp -r $SCRIPT_DIR/dotfiles/.config/* ~/.config/
-sudo cp $SCRIPT_DIR/dotfiles/.home/* ~/
+sudo cp $SCRIPT_DIR/dotfiles/.home/* $HOME
