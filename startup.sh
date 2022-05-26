@@ -33,17 +33,17 @@ select option in "${menu[@]}" "Quit"; do
     case "$REPLY" in
     1) echo -e "\033[1;32mYou chose $option\n\033[1;36m" 
         if [ $(cat /proc/sys/kernel/hostname) != "Vuk1lisPC" ]; then
-        bash .$SCRIPT_DIR/scripts/user.sh
+        bash $SCRIPT_DIR/scripts/user.sh
         fi
-        bash .$SCRIPT_DIR/scripts/dotfiles.sh
-        bash .$SCRIPT_DIR/scripts/fedora.sh
+        bash $SCRIPT_DIR/scripts/dotfiles.sh
+        bash $SCRIPT_DIR/scripts/fedora.sh
         break;;
     2) echo -e "\033[1;32mYou chose $option\n\033[1;36m" 
         if [ $(cat /proc/sys/kernel/hostname) != "Vuk1lisPC" ]; then
-        bash .$SCRIPT_DIR/scripts/user.sh
+        bash $SCRIPT_DIR/scripts/user.sh
         fi
-        bash .$SCRIPT_DIR/scripts/dotfiles.sh
-        bash .$SCRIPT_DIR/scripts/fedora.sh
+        bash $SCRIPT_DIR/scripts/dotfiles.sh
+        bash $SCRIPT_DIR/scripts/fedora.sh
         break;;
     *) echo -e "\033[1;31m- $REPLY is invalid option. Try another one. -\033[1;36m";;
     esac
