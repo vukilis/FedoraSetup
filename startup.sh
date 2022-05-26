@@ -47,7 +47,7 @@ select option in "${menu[@]}" "Quit"; do
         break;;
     *) echo -e "\033[1;31m- $REPLY is invalid option. Try another one. -\033[1;36m";;
     esac
-done;;
+done
 
 
 # if [ $(cat /proc/sys/kernel/hostname) != "Vuk1lisPC" ]; then
