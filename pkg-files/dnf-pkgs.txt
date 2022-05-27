@@ -1,6 +1,12 @@
 util-linux-user
 wget 
-kitty                               
+kitty  
+bridge-utils 
+libvirt 
+virt-install 
+qemu-kvm
+virt-manager 
+VirtualBox-6.1                            
 code                                                                     
 dnf-plugins-core                      
 python3-pip         

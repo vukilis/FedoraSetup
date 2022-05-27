@@ -17,7 +17,19 @@ repo_pkgs(){
   sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 }
 
+###### Repo VirtualBox ######
+cat <<EOF | sudo tee /etc/yum.repos.d/virtualbox.repo 
+[virtualbox]
+name=Fedora $releasever - $basearch - VirtualBox
+baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/36/\$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc
+EOF
+
 ########## Update ##########
+sudo dnf search -y virtualbox
 repo_pkgs
 #sudo dnf check-update
 sudo dnf -y update
@@ -53,6 +65,20 @@ sudo pip3 install --user virtualenvwrapper
 mkdir ~/.virtualenvs/
 source ~/.zshrc
 mkvirtualenv -p python3.9 test
+
+########## Setup virtualBox ##########
+sudo usermod -a -G vboxusers $USER
+newgrp vboxusers
+id $USER
+
+########## Setup QEMU ##########
+egrep -c '(vmx|svm)' /proc/cpuinfo
+sudo systemctl enable libvirtd.service
+sudo systemctl start libvirtd.service
+sudo virsh net-start default
+sudo virsh net-autostart default
+sudo adduser vukilis libvirt
+sudo adduser vukilis libvirt-qemu
 
 ########## Restart services ##########
 systemctl --user restart pipewire
