@@ -45,7 +45,7 @@ echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 sudo cp -r $SCRIPT_DIR/dotfiles/zsh/. $HOME
 sudo cp -r $SCRIPT_DIR/fonts/* /usr/share/fonts/
 fc-cache -f -v
-chsh $USER -s /bin/zsh
+sudo chsh $USER -s /bin/zsh
 source ~/.zshrc
 
 ########## Setup Python ##########
