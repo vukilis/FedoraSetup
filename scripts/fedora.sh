@@ -38,14 +38,19 @@ for pkg in `cat $SCRIPT_DIR/pkg-files/dnf-pkgs.txt`
 do sudo dnf -y install $pkg
 done
 
-########## Setup Python ##########
-sudo pip3 install virtualenvwrapper
-mkvirtualenv -p python3.9 test
-
 ########## Setup zshhistory ##########
 touch "$HOME/.cache/zshhistory"
-echo source ~/.zshrc
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+sudo cp -r $SCRIPT_DIR/dotfiles/zsh/. $HOME
 chsh $USER -s /bin/zsh
+source ~/.zshrc
+
+########## Setup Python ##########
+sudo pip3 install --user virtualenvwrapper
+mkdir ~/.venvs/
+source ~/.zshrc
+mkvirtualenv -p python3.9 test
 
 ########## Restart services ##########
 systemctl --user restart pipewire
