@@ -43,12 +43,14 @@ touch "$HOME/.cache/zshhistory"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 sudo cp -r $SCRIPT_DIR/dotfiles/zsh/. $HOME
+sudo cp -r $SCRIPT_DIR/fonts/* /usr/share/fonts/
+fc-cache -f -v
 chsh $USER -s /bin/zsh
 source ~/.zshrc
 
 ########## Setup Python ##########
 sudo pip3 install --user virtualenvwrapper
-mkdir ~/.venvs/
+mkdir ~/.virtualenvs/
 source ~/.zshrc
 mkvirtualenv -p python3.9 test
 
