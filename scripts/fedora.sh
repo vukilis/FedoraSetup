@@ -50,7 +50,7 @@ for pkg in `cat $SCRIPT_DIR/pkg-files/dnf-pkgs.txt`
 do sudo dnf -y install $pkg
 done
 
-########## Setup zshhistory ##########
+########## Setup zshhistory ##########  !!! replace to terminal_zsh_script !!!
 touch "$HOME/.cache/zshhistory"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc

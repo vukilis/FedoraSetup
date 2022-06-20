@@ -43,7 +43,7 @@ select option in "${menu[@]}" "Quit"; do
         bash $SCRIPT_DIR/scripts/user.sh
         fi
         bash $SCRIPT_DIR/scripts/dotfiles.sh
-        bash $SCRIPT_DIR/scripts/fedora.sh
+        bash $SCRIPT_DIR/scripts/work-fedora.sh
         break;;
     $((${#menu[@]}+1))) echo "Goodbye!"; break;;
     *) echo -e "\033[1;31m- $REPLY is invalid option. Try another one. -\033[1;36m";;
