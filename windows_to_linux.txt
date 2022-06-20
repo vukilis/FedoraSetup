@@ -1,0 +1,128 @@
+FIRST INSTALL STEAM
+
+https://christitus.com/ultimate-linux-gaming-guide/
+https://www.linuxcapable.com/how-to-install-xanmod-kernel-on-fedora-36-linux/
+https://www.linuxcapable.com/how-to-install-liquorix-kernel-on-fedora-36-linux/
+https://wiki.winehq.org/Fedora
+https://linux-packages.com/fedora-36/package/lutrisx86-64
+https://github.com/FeralInteractive/gamemode
+https://www.linuxcapable.com/how-to-install-steam-on-fedora-35/
+https://extensions.gnome.org/extension/615/appindicator-support/
+https://usebottles.com/
+https://github.com/GloriousEggroll/proton-ge-custom#manual
+https://github.com/flightlessmango/MangoHud
+https://github.com/derrod/legendary
+https://askubuntu.com/questions/500069/how-to-check-if-my-wine-prefix-is-32-bit-or-64-bit
+
+GRAPHICS DRIVERS
+https://github.com/lutris/docs/blob/master/InstallingDrivers.md
+
+
+CHECK KERNEL:
+uname -sr
+
+za gamemode ako fail:
+https://www.linuxcapable.com/install-cmake-on-fedora-linux-35/
+https://forum.endeavouros.com/t/how-to-switch-to-wayland-in-kde-plasma/21957
+https://unix.stackexchange.com/questions/202891/how-to-know-whether-wayland-or-x11-is-being-used
+https://developer.fedoraproject.org/tech/languages/c/cpp_installation.html
+
+
+##########################################     COMMANDS      ##################################################################################
+ventoy - MultiBoot USB
+
+sudo dnf -y install steam
+sudo dnf -y install neofetch
+sudo dnf -y install htop
+sudo dnf -y install ncdu
+sudo dnf -y install cmatrix
+sudo dnf -y install lsd
+sudo dnf -y install fd-find
+sudo dnf -y install qjackctl
+sudo dnf -y install stacer
+sudo dnf -y install opendoas       // https://www.makeuseof.com/how-to-install-and-use-doas/
+------------------------------------------------------
+install xanmod:
+sudo dnf copr enable rmnscnce/kernel-xanmod -y
+sudo dnf install kernel-xanmod-edge -y
+
+uninstall xanmod:
+sudo dnf copr disable rmnscnce/kernel-xanmod -y
+sudo dnf autoremove kernel-xanmod-edge -y
+sudo dnf reinstall kernel*
+
+verify install:
+echo $XDG_SESSION_TYPE or neofetch
+------------------------------------------------------
+install liquorix:
+sudo dnf copr enable rmnscnce/kernel-lqx -y
+sudo dnf install kernel-lqx -y
+
+uninstall liquorix:
+sudo dnf copr disable rmnscnce/kernel-lqx -y
+sudo dnf autoremove kernel-lqx* -y
+sudo dnf reinstall kernel*
+
+verify liquorix:
+echo $XDG_SESSION_TYPE or neofetch
+------------------------------------------------------
+install wine:
+dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/36/winehq.repo
+dnf install winehq-devel
+------------------------------------------------------
+check ESync: 
+ulimit -Hn
+------------------------------------------------------
+install GameMode:
+dnf install meson systemd-devel pkg-config git dbus-devel
+git clone https://github.com/FeralInteractive/gamemode.git
+cd gamemode
+git checkout 1.6.1 # omit to build the master branch
+./bootstrap.sh
+------------------------------------------------------
+install Lutris:
+sudo dnf install lutris.x86_64
+------------------------------------------------------
+install ProtonGE:
+mkdir ~/.steam/root/compatibilitytools.d
+tar -xf GE-ProtonVERSION.tar.gz -C ~/.steam/root/compatibilitytools.d/
+cd ~
+wget https://raw.githubusercontent.com/Termuellinator/ProtonUpdater/master/cproton.sh
+sudo chmod +x cproton.sh
+./cproton.sh
+
+Download latest release ProtonGE
+curl -s https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest \
+| grep "browser_download_url.*.tar.gz" \
+| cut -d : -f 2,3 \
+| tr -d \" \
+| wget -i -
+------------------------------------------------------
+
+
+SAMBA:
+https://www.server-world.info/en/note?os=Fedora_36&p=samba&f=2
+https://www.tecmint.com/install-samba-rhel-centos-fedora/
+
+BTRFS SNAPSHOT:
+https://linuxhint.com/use-btrfs-snapshots/
+
+GRUB:
+https://christitus.com/bootloader-themes/
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+JOPLIN:
+$ wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
+
+
+
+
+
+
+
+
+
+
+
+
+

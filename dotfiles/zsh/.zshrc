@@ -42,13 +42,10 @@ export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=' -p /usr/bin/python3 '
 export PROJECT_HOME=$HOME/Desktop
-source /usr/local/bin/virtualenvwrapper.sh
+source .local/bin/virtualenvwrapper.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Added by Amplify CLI binary installer
-export PATH="$HOME/.amplify/bin:$PATH"
 
 # Load ; should be last.
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null

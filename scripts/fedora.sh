@@ -29,7 +29,7 @@ gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc
 EOF
 
 ########## Update ##########
-sudo dnf search -y virtualbox
+#sudo dnf search -y virtualbox
 repo_pkgs
 #sudo dnf check-update
 sudo dnf -y update
@@ -60,8 +60,14 @@ fc-cache -f -v
 sudo chsh $USER -s /bin/zsh
 source ~/.zshrc
 
+########## Setup lf file manager ##########
+wget https://github.com/gokcehan/lf/releases/download/r8/lf-linux-amd64.tar.gz
+tar xvf lf-linux-amd64.tar.gz
+sudo mv lf /usr/local/bin
+rm -rf lf-linux-amd64.tar.gz
+
 ########## Setup Python ##########
-sudo pip3 install --user virtualenvwrapper
+pip3 install --user virtualenvwrapper
 mkdir ~/.virtualenvs/
 source ~/.zshrc
 mkvirtualenv -p python3.9 test
@@ -81,6 +87,7 @@ sudo adduser vukilis libvirt
 sudo adduser vukilis libvirt-qemu
 
 ########## Restart services ##########
+systemctl --user daemon-reload
 systemctl --user restart pipewire
 
 ########## Check version ##########

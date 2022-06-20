@@ -1,5 +1,4 @@
 util-linux-user
-wget 
 kitty  
 bridge-utils 
 libvirt 
@@ -9,7 +8,17 @@ virt-manager
 VirtualBox-6.1                            
 code                                                                     
 dnf-plugins-core                      
-python3-pip         
+python3-pip
+steam     
+neofetch
+htop
+ncdu
+cmatrix
+lsd
+fd-find
+qjackctl
+stacer
+opendoas       
 zsh 
 zsh-syntax-highlighting 
 autojump 
