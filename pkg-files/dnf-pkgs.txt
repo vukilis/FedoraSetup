@@ -24,3 +24,5 @@ zsh-syntax-highlighting
 autojump 
 zsh-autosuggestions
 tldt
+trash-cli
+progress
