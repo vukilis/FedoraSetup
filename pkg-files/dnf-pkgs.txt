@@ -23,6 +23,7 @@ zsh
 zsh-syntax-highlighting 
 autojump 
 zsh-autosuggestions
-tldt
+tldr
 trash-cli
 progress
+finger
